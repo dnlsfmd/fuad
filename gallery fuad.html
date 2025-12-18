@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gallery - MOHD FUAD DANIEL</title>
+    <link rel="stylesheet" href="mystyle1.css">
+</head>
+<style>
+    /* 1. The Container Grid */
+    .gallery-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px; /* Space between cards */
+        margin-top: 20px;
+        align-items: stretch; /* Makes all cards in a row the same height */
+    }
+
+    /* 2. The Card Frame */
+    .album-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        overflow: hidden; /* Clips the image zoom effect */
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* 3. The Image Fitting Logic */
+    .image-container {
+        width: 100%;
+        height: 280px; /* Fixed height for perfect alignment */
+        overflow: hidden;
+        background-color: #f0f0f0;
+    }
+
+    .album-image {
+        width: 100%;
+        height: 100%;
+        /* This is the "Magic" line: it fills the frame perfectly without distortion */
+        object-fit: cover; 
+        transition: transform 0.5s ease;
+    }
+
+    /* 4. Hover Effects */
+    .album-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .album-card:hover .album-image {
+        transform: scale(1.1); /* Subtle zoom-in effect on the photo */
+    }
+
+    .album-info {
+        padding: 20px;
+        text-align: center;
+        background: white;
+    }
+</style>
+
+
+<body>
+
+<nav aria-label="Main Navigation">
+  <div class="nav-inner">
+    <div class="brand">MOHD FUAD DANIEL</div>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="biodata.html">Biodata</a>
+      <a href="education fuad.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="family fuad.html">Family</a>
+      <a href="gallery fuad.html" style="color:var(--accent-gold);">Gallery</a>
+    </div>
+  </div>
+</nav>
+
+<div class="header-spacer"></div>
+
+<section class="container" aria-label="Introduction">
+    <div class="hero-card">
+        <div class="hero-icon">📸</div>
+        <h1 class="hero-title">Gallery</h1>
+        <p class="hero-sub">A visual journey through my life's moments and interests.</p>
+        <p class="hero-meta">Photos • Travel • Hobbies</p>
+        <div id="current-time-display"></div> <div class="button-group">
+            <a href="index.html" class="btn-primary">HOME</a>
+            <a href="biodata.html" class="btn-primary">BIODATA</a>
+            <a href="education fuad.html" class="btn-primary">EDUCATION</a>
+            <a href="experience.html" class="btn-primary">EXPERIENCE</a>
+            <a href="family fuad.html" class="btn-primary">FAMILY</a>
+            <a href="gallery fuad.html" class="btn-primary" style="background-color: #9e7230;">GALLERY</a>
+        </div>
+    </div>
+</section>
+
+<main class="container">
+   <h2 class="float-horizontal" style="text-align:center;">Personal & Early Life</h2>
+    <div class="gallery-row">
+        
+        <a href="album_me.html" class="album-card">
+            <div class="image-container">
+                <img src="All%20Picture/time kecik8.jpg" class="album-image" alt="My Portraits">
+            </div>
+            <div class="album-info">
+                <h3>My Portraits</h3>
+                <p>8 Photos • View Album</p>
+            </div>
+        </a>
+        
+        <a href="album_university.html" class="album-card">
+            <div class="image-container">
+                <img src="All%20Picture/unilife.jpg" class="album-image" alt="University Life">
+            </div>
+            <div class="album-info">
+                <h3>University Life</h3>
+                <p>8 Photos • View Album</p>
+            </div>
+        </a>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>© 2025 MOHD FUAD DANIEL — Visual Journey.</p>
+        <div class="site-tracker">
+            <span class="status-dot" style="height: 10px; width: 10px; background-color: #28a745; border-radius: 50%; display: inline-block;"></span> 
+            <strong>Site Status:</strong> Live & Operational
+            <span class="separator"> | </span>
+            <strong>Website Created:</strong> Dec 1, 2025
+            <br>
+            <strong>Last Content Update:</strong> Dec 17, 2025
+        </div>
+        <div id="real-time-tracker" class="live-clock" style="margin-top: 10px; font-family: monospace;"></div>
+    </div>
+</footer>
+
+<script>
+    // Unified Time Tracker Functions
+    function updateTimers() {
+        const now = new Date();
+        
+        // Update Footer Tracker
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+        const dateStr = now.toLocaleDateString('en-US', dateOptions);
+        const timeStr = now.toLocaleTimeString('en-US', timeOptions);
+        
+        const footerClock = document.getElementById('real-time-tracker');
+        if(footerClock) footerClock.innerHTML = System Time: ${dateStr} • ${timeStr} (MYT);
+
+        // Update Hero Tracker
+        const heroDate = now.toLocaleDateString('en-US',{weekday:'short', month:'short', day:'numeric', year:'numeric'});
+        const heroTime = now.toLocaleTimeString('en-US',{hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:true});
+        const heroElement = document.getElementById('current-time-display');
+        if(heroElement) heroElement.innerText = ${heroDate} at ${heroTime} MYT;
+    }
+
+    setInterval(updateTimers, 1000);
+    updateTimers();
+</script>
+
+</body>
+</html>

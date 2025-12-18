@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Family - MOHD FUAD DANIEL</title>
+<link rel="stylesheet" href="mystyle1.css">
+</head>
+
+<body>
+
+<nav aria-label="Main Navigation">
+  <div class="nav-inner">
+    <div class="brand">MOHD FUAD DANIEL</div>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="biodata.html">Biodata</a>
+      <a href="education fuad.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="family fuad.html" style="color:var(--accent-gold);">Family</a>
+      <a href="gallery fuad.html">Gallery</a>
+    </div>
+  </div>
+</nav>
+
+<div class="header-spacer"></div>
+
+<section class="container" aria-label="Introduction">
+  <div class="hero-card">
+    <div class="hero-icon">👨‍👩‍👧‍👦</div>
+    <h1 class="hero-title">Family Tree</h1>
+    <p class="hero-sub">The foundation of my life and biggest support system.</p>
+    <p class="hero-meta">Parents • Siblings • Home</p>
+    <div id="current-time-display"></div>
+
+    <div class="button-group">
+      <a href="index.html" class="btn-primary">HOME</a>
+      <a href="biodata.html" class="btn-primary">BIODATA</a>
+      <a href="education fuad.html" class="btn-primary">EDUCATION</a>
+      <a href="experience.html" class="btn-primary">EXPERIENCE</a>
+      <a href="family fuad.html" class="btn-primary" style="background-color:#9e7230;">FAMILY</a>
+      <a href="gallery fuad.html" class="btn-primary">GALLERY</a>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+
+  <div class="family-tree">
+<div class="family-tree">
+
+  <main class="container">
+
+    <div class="family-tree">
+
+        <div class="family-row parents">
+            <div class="profile-card">
+                <div class="profile-img-placeholder">
+                    <img src="All Picture/abah.jpg" alt="Father">
+                </div>
+                <h3>Mohamad Salleh Bin Ali</h3>
+                <p class="role">Father | 💪✨(قوام)</p>
+                <p class="details">The mighty guardian, like a sturdy mountain shielding the family with provision, strength and wise guidance to sunnah.</p>
+                </div>
+
+            <div class="profile-card">
+                <div class="profile-img-placeholder">
+                    <img src="All Picture/mama.jpg" alt="Mother">
+                </div>
+                <h3>Norhana Binti Ayub</h3>
+                <p class="role">Mother | ❤️🌹(أُمّ)</p>
+                <p class="details">The tender mercy fountain, like a blooming garden nurturing hearts with love, faith and endless compassion where the paradise at her feet!</p>
+                </div>
+        </div>
+
+        <div class="family-row children">
+            
+            <div class="profile-card">
+                <div class="profile-img-placeholder">
+                    <img src="All Picture/ayin.jpg" alt="Eldest Brother">
+                </div>
+                <h3>Mohamad Fadzlen Bin Mohamad Salleh</h3>
+                <p class="role">First Child | ✨(سابق)</p>
+                <p class="details">The shining trailblazer, lighting the family path like a star guiding the night and bring inspiration.</p>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-img-placeholder">
+                    <img src="All Picture/kakak.jpg" alt="Eldest Sister">
+                </div>
+                <h3>Farah Ajerah Binti Mohamad Salleh</h3>
+                <p class="role">Second Child | 🌟(ثاني)</p>
+                <p class="details"> The loyal companion, weaving strength together like threads in a beautiful tapestry that brings pure happiness.</p>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-img-placeholder">
+                    <img src="All Picture/cik1.jpg" alt="Middle Sister">
+                </div>
+                <h3>Fatin Auni Binti Mohamad Salleh</h3>
+                <p class="role">Third Child | ⚖️(ثالث)</p>
+                <p class="details">The heart harmonizer, dancing in the center to fill the home with perfect peace.</p>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-img-placeholder">
+                    <img src="All Picture/puad.jpg" alt="Younger Sibling">
+                </div>
+                <h3>Mohamad Fuad Daniel Bin Mohamad Salleh</h3>
+                <p class="role">Youngest Child | 🌈(رابع)</p>
+                <p class="details">The joyful abundance, blooming like spring flowers bringing endless divine gifts!</p>
+            </div>
+
+        </div>
+       </div>
+    </main>
+
+    <h2 class="section-title" style="margin-top: 50px;">Family Moments Gallery</h2>
+    <p class="section-subtitle">A collection of special family photos.</p>
+
+    <div class="gallery-grid-5x2">
+        
+        <div class="image-frame" onclick="openLightbox('All Picture/biru.jpg')"><img src="All Picture/biru.jpg" alt="Familyy 1"></div>
+        <div class="image-frame" onclick="openLightbox('All Picture/doludolu.jpg')"><img src="All Picture/doludolu.jpg" alt="Raya Doludolu 2"></div>
+        <div class="image-frame" onclick="openLightbox('All Picture/family3.jpg')"><img src="All Picture/family3.jpg" alt="Family 3"></div>
+        <div class="image-frame" onclick="openLightbox('All Picture/2018.jpg')"><img src="All Picture/2018.jpg" alt="Raya Day 2018 4"></div>
+        <div class="image-frame" onclick="openLightbox('All Picture/family1.jpg')"><img src="All Picture/family1.jpg" alt="Family 2020 5"></div>
+
+    </div> 
+  </div>
+</section>
+
+<div id="myLightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close-btn">&times;</span>
+    <div class="lightbox-content-wrapper">
+        <img id="lightboxImage" class="lightbox-content">
+        <div id="caption"></div>
+    </div>
+</div>
+
+<script>
+    function openLightbox(src) {
+        document.getElementById("myLightbox").style.display = "block";
+        document.getElementById("lightboxImage").src = src;
+    }
+
+    function closeLightbox() {
+        document.getElementById("myLightbox").style.display = "none";
+    }
+
+    // Optional: Close lightbox using the Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+</script>
+  
+</main>
+
+<footer>
+  <footer class="site-footer">
+    <div class="footer-content">
+        <p>© 2025 MOHD FUAD DANIEL — Built with love and support from my family.</p>
+        <div class="site-tracker">
+            <span class="status-dot"></span> 
+            <strong>Site Status:</strong> Live & Operational
+            <span class="separator">|</span>
+            <strong>Website Created:</strong> Dec 1, 2025
+            <br>
+            <strong>Last Content Update:</strong> Dec 17, 2025
+        </div>
+        <div id="real-time-tracker" class="live-clock"></div>
+    </div>
+</footer>
+
+<script>
+function updateLiveTracker() {
+    const now = new Date();
+    
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+    
+    const dateStr = now.toLocaleDateString('en-US', dateOptions);
+    const timeStr = now.toLocaleTimeString('en-US', timeOptions);
+    
+    document.getElementById('real-time-tracker').innerHTML = 
+        `System Time: ${dateStr} • ${timeStr} (MYT)`;
+}
+
+setInterval(updateLiveTracker, 1000);
+updateLiveTracker();
+
+function updateHeroTime() {
+    const now = new Date();
+    const date = now.toLocaleDateString('en-US',{weekday:'short', month:'short', day:'numeric', year:'numeric'});
+    const time = now.toLocaleTimeString('en-US',{hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:true});
+    const element = document.getElementById('current-time-display');
+    if(element) element.innerText = `${date} at ${time} MYT`;
+}
+setInterval(updateHeroTime, 1000);
+updateHeroTime();
+</script>
+
+</body>
+</html>

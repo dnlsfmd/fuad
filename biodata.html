@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Biodata - MOHD FUAD DANIEL</title>
+<link rel="stylesheet" href="mystyle1.css">
+
+<style>
+:root{
+    --page-w:1200px;
+    --gold-start: #fffaf5; 
+    --gold-end:     #fff2e6; 
+    --card-bg: rgba(255,255,255,0.95);
+    --text-dark: #111;
+    --muted:#666;
+    --accent-gold: #b8863a;
+    --shadow: 0 10px 30px rgba(18,25,30,0.08);
+    --shadow-hover: 0 16px 40px rgba(18,25,30,0.15);
+    --radius:28px;
+    --spacing-l: 40px;
+    --spacing-m: 24px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+    margin:0;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(180deg, var(--gold-start), var(--gold-end));
+    color: var(--text-dark);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.6;
+}
+
+/* ---------- NAVBAR (Fixed Glass) ---------- */
+nav{
+    position:fixed; 
+    top:0;
+    left:0;
+    right:0;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index:1000;
+}
+nav .nav-inner{
+    width:100%;
+    max-width:var(--page-w);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 var(--spacing-m);
+}
+nav .brand{font-weight:700; letter-spacing:1px; color: var(--accent-gold);}
+nav .links a{
+    margin-left:20px;
+    color: var(--text-dark);
+    text-decoration:none;
+    font-weight:600;
+    opacity:.85;
+    transition: color 0.3s ease;
+}
+nav .links a:hover{color:var(--accent-gold)}
+
+.header-spacer{height:80px}
+
+/* ---------- HERO CARD ---------- */
+.container{max-width:var(--page-w);margin: 0 auto;padding:0 var(--spacing-m);}
+.hero-card{
+    max-width: 900px;
+    margin: 0 auto var(--spacing-l);
+    padding: var(--spacing-l);
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+.hero-icon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    display: inline-block;
+    color: var(--accent-gold); 
+}
+.hero-title{font-size: 3rem; font-weight: 800; margin: 0 0 5px 0; line-height: 1.1;}
+.hero-sub{font-size: 1.2rem; color: var(--muted);}
+.hero-meta{font-weight: 600; color: var(--accent-gold); margin-bottom: 10px;}
+#current-time-display {font-size: 0.95rem; color: var(--muted); margin-top: 10px;} /* Added for JS tracker */
+
+
+/* Custom Button Styling */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent-gold);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: transform 0.2s ease, background 0.2s ease;
+    flex-grow: 1;
+    min-width: 120px;
+    text-align: center;
+    margin: 5px;
+}
+.btn-primary:hover {
+    transform: scale(1.02);
+    background-color: #9e7230;
+    color: #fff;
+}
+.button-group {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    margin-top: 15px;
+}
+
+/* ---------- GENERAL BIODATA SECTION STYLES ---------- */
+.section-title{font-size: 2.2rem;font-weight: 700;margin: var(--spacing-l) 0 0;padding-bottom: 5px;color: var(--text-dark);}
+.section-subtitle{font-size: 1rem;color: var(--muted);margin-bottom: var(--spacing-m);}
+
+/* Profile Photo and Table Container */
+.info-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1 column for photo, 2 columns for table */
+    max-width: 900px;
+    gap: var(--spacing-m);
+    margin: var(--spacing-m) auto var(--spacing-l);
+}
+
+.profile-photo-frame {
+    display: flex;
+    flex-direction: column; /* Stack slideshow and dots */
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-m);
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Slideshow Container */
+.slideshow-container {
+    width: 240px; 
+    height: 300px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 4px solid var(--accent-gold);
+}
+
+/* Individual Slides (Images) */
+.mySlides {
+    display: none; /* Hide all slides by default */
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+    color: var(--muted);
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 240px; /* Center content vertically (only used if image fails to load) */
+    /* Add fade animation */
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+/* Dots/Indicators */
+.dot-container {
+    text-align: center;
+    margin-top: 15px;
+}
+.dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+.active-dot, .dot:hover {
+    background-color: var(--accent-gold);
+}
+
+
+.biodata-table {
+    width: 100%;
+    margin: 0; 
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    padding: 20px;
+    text-align: left;
+}
+.biodata-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.biodata-table th, .biodata-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.biodata-table th {
+    font-weight: 700;
+    color: var(--accent-gold);
+    width: 35%;
+}
+.biodata-table td {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+.biodata-table tr:last-child th,
+.biodata-table tr:last-child td {
+    border-bottom: none;
+}
+
+.profile-photo-frame, 
+.biodata-table, 
+.feature-card, 
+.hobby-card {
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; 
+    will-change: transform; 
+}
+
+/* Apply the subtle animation on hover */
+.profile-photo-frame:hover, 
+.biodata-table:hover, 
+.feature-card:hover, 
+.hobby-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover); 
+}
+
+
+.hobby-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 12px;
+}
+
+.hobby-image-placeholder span {
+    display: none; 
+}
+
+
+.full-grid-section {
+    display: grid;
+    gap: var(--spacing-m);
+    padding-bottom: var(--spacing-l);
+}
+
+/* Grid Layouts for specific sections */
+.strength-weakness-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.facts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.hobbies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.feature-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: var(--spacing-m);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.feature-card h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-top: 0;
+    color: var(--accent-gold);
+}
+.feature-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Hobby Card Specific Styles */
+.hobby-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: var(--spacing-m);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+    text-align: center;
+}
+
+.hobby-image-placeholder {
+    width: 100%;
+    padding-bottom: 100%; 
+    background: #e9e9e9;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-weight: 600;
+    position: relative; 
+}
+
+
+/* Responsive adjustment for photo frame */
+@media (max-width: 768px) {
+    .info-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-m);
+    }
+    .profile-photo-frame {
+        order: -1; 
+        padding: 15px;
+    }
+    /* Updated to target the slideshow container for responsiveness */
+    .slideshow-container {
+        width: 200px;
+        height: 200px;
+    }
+    .mySlides {
+        line-height: 200px; 
+    }
+}
+@media (max-width: 480px) {
+    .slideshow-container {
+        width: 150px;
+        height: 150px;
+    }
+    .mySlides {
+        line-height: 150px; 
+    }
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main Navigation">
+  <div class="nav-inner">
+    <div class="brand">MOHD FUAD DANIEL</div>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="biodata.html" style="color:var(--accent-gold);">Biodata</a>
+      <a href="education fuad.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="family fuad.html">Family</a>
+      <a href="gallery fuad.html">Gallery</a>
+    </div>
+  </div>
+</nav>
+
+<div class="header-spacer"></div>
+
+<section class="container" aria-label="Introduction">
+    <div class="hero-card">
+        <div class="hero-icon">👤</div>
+        <h1 class="hero-title">Personal Biodata</h1>
+        <p class="hero-sub">Get to know the person behind the portfolio.</p>
+        <p class="hero-meta">Profile • Contact • Interests</p>
+        <div id="current-time-display"></div>
+        <div class="button-group">
+            <a href="index.html" class="btn-primary">HOME</a>
+            <a href="biodata.html" class="btn-primary" style="background-color: #9e7230;">BIODATA</a>
+            <a href="education fuad.html" class="btn-primary">EDUCATION</a>
+            <a href="experience.html" class="btn-primary">EXPERIENCE</a>
+            <a href="family fuad.html" class="btn-primary">FAMILY</a>
+            <a href="gallery fuad.html" class="btn-primary">GALLERY</a>
+        </div>
+    </div>
+</section>
+
+<main class="container">
+     
+    <h2 class="section-title">Personal Information</h2>
+    <p class="section-subtitle">Key facts about my background and demographics.</p>
+    
+    <div class="info-container">
+
+        <div class="profile-photo-frame">
+             <div class="floating-title-wrapper">
+        <h2 class="floating-text">ABOUT ME !!!!!</h2>
+    </div> 
+
+          <div class="slideshow-container" id="bioSlideshow">
+        
+        <div class="mySlides fade">
+            <img src="All Picture/puad1.jpg" alt="Formal Profile Photo" style="width:100%; height:100%; object-fit: cover; border-radius: 16px;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="All Picture/fuad encem.jpg" alt="Casual Photo" style="width:100%; height:100%; object-fit: cover; border-radius: 16px;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="All Picture/puad3.jpg" alt="Candid Photo" style="width:100%; height:100%; object-fit: cover; border-radius: 16px;">
+        </div>
+        
+    </div>
+    
+    <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+</div>
+
+        <div class="biodata-table">
+            <table>
+                <tr>
+                    <th>Full Name</th>
+                    <td>MOHAMAD FUAD DANIEL BIN MOHAMAD SALLEH</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth</th>
+                    <td>13 July 2005</td>
+                </tr>
+                <tr>
+                    <th>Place of Birth</th>
+                    <td>Batu Pahat, Johor</td>
+                </tr>
+                <tr>
+                    <th>Nationality</th>
+                    <td>Malaysian</td>
+                </tr>
+                <tr>
+                    <th>Religion</th>
+                    <td>Islam</td>
+                </tr>
+                <tr>
+                    <th>Marital Status</th>
+                    <td>Single</td>
+                </tr>
+                <tr>
+                    <th>Language Proficiency</th>
+                    <td>Bahasa Melayu (Fluent), English (Intermediate)</td>
+                </tr>
+                <tr>
+                    <th>Current Address</th>
+                    <td>TL 58/2B Lot 2075, Jalan Kampung Parit Bengkok, Mukim 2 Bagan, 83000 Batu Pahat, Johor Darul Takzim</td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+    
+    <h2 class="section-title">My Strengths & Weaknesses 💪</h2>
+    <p class="section-subtitle">A balanced look at my personal attributes.</p>
+    <div class="full-grid-section strength-weakness-grid">
+        
+        <div class="feature-card">
+            <div class="feature-icon" style="color:#28a745;">✅</div>
+            <h3>Strength: Detailed & Organized</h3>
+            <p>I prioritize order and thoroughness, ensuring all tasks, especially those involving data or planning (like my studies in Information Management), are executed meticulously.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon" style="color:#dc3545;">❌</div>
+            <h3>Weakness: Procrastination</h3>
+            <p>Sometimes I spend too much time analyzing a task, which can lead to delays in starting or moving on to the next task.</p>
+        </div>
+    </div>
+    
+   <h2 class="section-title">5 Interesting Facts About Me 🤔</h2>
+<p class="section-subtitle">Things you might not know!</p>
+
+<div class="full-grid-section facts-grid">
+
+  <div class="feature-card">
+    <div class="image-frame">
+      <img src="All Picture/nature lover.jpeg" alt="Nature lover">
+    </div>
+    <strong>1</strong>
+    <h3>Nature Lover</h3>
+    <p>
+      I find peace and inspiration being outdoors especially near rivers or greenery,
+      which is why I enjoy hiking.
+    </p>
+  </div>
+
+  <div class="feature-card">
+    <div class="image-frame">
+      <img src="All Picture/laguuuu.jpg" alt="Music enthusiast">
+    </div>
+    <strong>2</strong>
+    <h3>Music Enthusiast</h3>
+    <p>
+      I listen to music almost constantly while studying or commuting,
+      focusing on Malaysian Pop and acoustic genres.
+    </p>
+  </div>
+
+  <div class="feature-card">
+    <div class="image-frame">
+      <img src="All Picture/barca.jpg" alt="Sports passion">
+    </div>
+    <strong>3</strong>
+    <h3>Passion for Sports</h3>
+    <p>
+      Football is more than a game to me. I admire creativity, intelligence
+      and teamwork on the pitch, especially players who play with vision and style.
+    </p>
+  </div>
+
+  <div class="feature-card">
+    <div class="image-frame">
+      <img src="All Picture/gymbros.jpg" alt="Discipline and routine">
+    </div>
+    <strong>4</strong>
+    <h3>Disciplined Lifestyle</h3>
+    <p>
+     Consistency drives success. It builds discipline through small, repeated actions across studies, growth and rest. This ensure that i stay on track in every situations.
+    </p>
+  </div>
+
+    <div class="feature-card">
+    <div class="image-frame">
+      <img src="All Picture/family bond.jpg" alt="Family bond">
+    </div>
+    <strong>5</strong>
+    <h3>Strong Family Bond</h3>
+    <p>
+      I value strong relationships with my family, as they provide support,
+      guidance and encouragement in everything I do.
+    </p>
+  </div>
+
+
+</div>
+
+
+    <h2 class="section-title">3 Core Hobbies 📸</h2>
+    <p class="section-subtitle">My favorite ways to relax and grow outside of my studies.</p>
+    <div class="full-grid-section hobbies-grid">
+        
+        <div class="hobby-card">
+            <div class="hobby-image-placeholder">
+                <img src="All Picture/badminton.jpeg" alt="Photo of sports" class="hobby-image">
+          </div>
+            <h3>Playing Sports 🏸</h3>
+            <p>I enjoy staying active through sports, as it helps me stay fit, relieve stress and build teamwork while challenging myself physically and mentally.</p>
+        </div>
+
+        <div class="hobby-card">
+            <div class="hobby-image-placeholder">
+                <img src="All Picture/shows1.jpeg" alt="Photo of shows and movies" class="hobby-image">
+            </div>
+            <h3>Watching Shows & Movies 🎬</h3>
+            <p>I enjoy watching shows and movies as a way to relax and unwind, while appreciating storytelling, cinematography and different genres of entertainment.</p>
+        </div>
+
+        <div class="hobby-card">
+            <div class="hobby-image-placeholder">
+                <img src="All Picture/scenery1.jpeg" alt="Photo of a landscape" class="hobby-image">
+            </div>
+            <h3>Photography 🏞️</h3>
+            <p>I enjoy capturing landscapes and nature scenes, it brought me calm and peace moment to enjoy.</p>
+        </div>
+
+    </div>
+    
+   </main>
+
+<footer style="text-align:center;padding:50px 20px 20px;color:var(--muted); font-size:0.9rem;">
+ <footer class="site-footer">
+    <div class="footer-content">
+        <p>© 2025 MOHD FUAD DANIEL — A glance into my personal profile.</p>
+        <div class="site-tracker">
+            <span class="status-dot"></span> 
+            <strong>Site Status:</strong> Live & Operational
+            <span class="separator">|</span>
+            <strong>Website Created:</strong> Dec 1, 202
+            <br>
+            <strong>Last Content Update:</strong> Dec 17, 2025
+        </div>
+        <div id="real-time-tracker" class="live-clock"></div>
+    </div>
+</footer>
+
+<script>
+function updateLiveTracker() {
+    const now = new Date();
+
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+    
+    const dateStr = now.toLocaleDateString('en-US', dateOptions);
+    const timeStr = now.toLocaleTimeString('en-US', timeOptions);
+    
+    document.getElementById('real-time-tracker').innerHTML = 
+        `System Time: ${dateStr} • ${timeStr} (MYT)`;
+}
+
+setInterval(updateLiveTracker, 1000);
+updateLiveTracker();
+
+function updateHeroTime() {
+    const now = new Date();
+    const date = now.toLocaleDateString('en-US',{weekday:'short', month:'short', day:'numeric', year:'numeric'});
+    const time = now.toLocaleTimeString('en-US',{hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:true});
+    const element = document.getElementById('current-time-display');
+    if(element) element.innerText = `${date} at ${time} MYT`;
+}
+setInterval(updateHeroTime, 1000);
+updateHeroTime();
+</script>
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    // This line tells the script to only look for images inside the Bio Slideshow
+    const container = document.getElementById("bioSlideshow");
+    if (!container) return; // Stop if the container isn't on this page
+
+    let slides = container.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    
+    // Hide only the slides in this specific container
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+    
+    slides[slideIndex-1].style.display = "block";  
+    if(dots[slideIndex-1]) dots[slideIndex-1].className += " active-dot";
+}
+
+// Auto-play for this page only
+setInterval(() => {
+    slideIndex++;
+    showSlides(slideIndex);
+}, 5000);
+</script>
+
+</body>
+</html>
